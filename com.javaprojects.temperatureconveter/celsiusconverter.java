@@ -9,10 +9,10 @@ public class Main {
         celsiusTemperature = value.nextInt();
         value.close();
 
-        final double kelvinTemperature = celsiusTemperature + 273.15;
-        final double fahreheintTemperature = (celsiusTemperature * 1.8) + 32;
-        final double reaumurTemperature = celsiusTemperature * 0.8;
-        final double rankineTemperature = (celsiusTemperature + 273.15) * 1.8;
+        final float kelvinTemperature = celsiusTemperature + 273.15f;
+        final float fahreheintTemperature = (celsiusTemperature * 1.8f) + 32;
+        final float reaumurTemperature = celsiusTemperature * 0.8f;
+        final float rankineTemperature = (celsiusTemperature + 273.15f) * 1.8f;
 
         System.out.printf(celsiusTemperature
                 + " °C in Kelvin = %.2f" + " K\n", kelvinTemperature);
