@@ -16,7 +16,7 @@ public class Question3 {
     System.out.println("Type the numbers: ");
 
     for (int i = 0; i < numbers.length; i++) {
-      System.out.print("Number #" + (i + 1));
+      System.out.print("Number #" + (i + 1) + ": ");
       numbers[i] = scan.nextInt();
     }
 
