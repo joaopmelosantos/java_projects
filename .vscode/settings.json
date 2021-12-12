@@ -2,6 +2,5 @@
   "java.project.sourcePaths": [
     "com.javaprojects.arraysandloops",
     "com.javaprojects.christmastree"
-  ],
-  "java.project.outputPath": "Outputs"
+  ]
 }
