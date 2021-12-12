@@ -1,11 +1,7 @@
 {
   "java.project.sourcePaths": [
-    "com.javaprojects.timestable",
-    "com.javaprojects.temperatureconvertor",
-    "com.javaprojects.quotetion",
-    "com.javaprojects.operations",
-    "com.javaprojects.celsiustofahreheint",
-    "com.javaprojects.inchesconversion"
+    "com.javaprojects.arraysandloops",
+    "com.javaprojects.christmastree"
   ],
   "java.project.outputPath": "Outputs"
 }
