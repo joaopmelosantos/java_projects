@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch OperatinsAndConditions",
+      "request": "launch",
+      "mainClass": "OperatinsAndConditions",
+      "projectName": "Java_e38773cc"
+    },
+    {
+      "type": "java",
       "name": "Launch ChristmasTree",
       "request": "launch",
       "mainClass": "ChristmasTree",
