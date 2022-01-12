@@ -1,6 +1,7 @@
 {
   "java.project.sourcePaths": [
+    "com.javaprojects.christmastree",
     "com.javaprojects.arraysandloops",
-    "com.javaprojects.christmastree"
+    "com.javaprojects.batalhanaval"
   ]
 }
