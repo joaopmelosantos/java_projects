@@ -31,60 +31,54 @@ public class Jogo {
     tabuleiro.printaTabuleiros();
 
     do {
-      jogadaAtual(jogadorAtual);
-      tabuleiro.printaTabuleiros();
+      jogadaJogador();
+      jogadaMaquina();
       verificaFimDeJogo();
+      tabuleiro.printaTabuleiros();
     } while (!fimDeJogo);
   }
 
-  public void jogadaAtual(int jogador) {
-    switch (jogador) {
-      case 1:
-        do {
-          do {
-            System.out.printf("\nDigite a linha da jogada (0-%d): \n", tabuleiro.tabuleiroJogador.length - 1);
-            linhaJogo = scan.nextInt();
-          } while (linhaJogo < 0 || linhaJogo > tabuleiro.tabuleiroJogador.length - 1);
+  public void jogadaJogador() {
+    do {
+      System.out.printf("\nDigite a linha da jogada (0-%d): \n", tabuleiro.tabuleiroJogador.length - 1);
+      linhaJogo = scan.nextInt();
+    } while (linhaJogo < 0 || linhaJogo > tabuleiro.tabuleiroJogador.length - 1);
 
-          do {
-            System.out.printf("\nDigite a coluna da jogada (0-%d): \n", tabuleiro.tabuleiroJogador.length - 1);
-            colunaJogo = scan.nextInt();
-          } while (colunaJogo < 0 || colunaJogo > tabuleiro.tabuleiroJogador.length - 1);
+    do {
+      System.out.printf("\nDigite a coluna da jogada (0-%d): \n", tabuleiro.tabuleiroJogador.length - 1);
+      colunaJogo = scan.nextInt();
+    } while (colunaJogo < 0 || colunaJogo > tabuleiro.tabuleiroJogador.length - 1);
 
-          for (int i = 0; i < tabuleiro.posicaoNaviosMaquina.length; i++) {
-            if (linhaJogo == tabuleiro.posicaoNaviosMaquina[i][0]
-                && colunaJogo == tabuleiro.posicaoNaviosMaquina[i][1]) {
-              tabuleiro.tabuleiroMaquina[linhaJogo][colunaJogo] = '*';
-              jogadorAtual = 2;
-              acertosJogador += 1;
-            }
-          }
+    if (tabuleiro.tabuleiroMaquina[linhaJogo][colunaJogo] == '*'
+        || tabuleiro.tabuleiroMaquina[linhaJogo][colunaJogo] == 'X') {
+      System.out.println("Posição já jogada, tente novamente!");
+      jogadaJogador();
+    }
 
-          if (tabuleiro.tabuleiroMaquina[linhaJogo][colunaJogo] != '*') {
-            tabuleiro.tabuleiroMaquina[linhaJogo][colunaJogo] = 'X';
-            jogadorAtual = 2;
-          }
+    for (int i = 0; i < tabuleiro.posicaoNaviosMaquina.length; i++) {
+      if (linhaJogo == tabuleiro.posicaoNaviosMaquina[i][0]
+          && colunaJogo == tabuleiro.posicaoNaviosMaquina[i][1]) {
+        tabuleiro.tabuleiroMaquina[linhaJogo][colunaJogo] = '*';
+        acertosJogador += 1;
+      }
+    }
 
-        } while (jogador != 1);
+    if (tabuleiro.tabuleiroMaquina[linhaJogo][colunaJogo] != '*') {
+      tabuleiro.tabuleiroMaquina[linhaJogo][colunaJogo] = 'X';
+    }
+  }
 
-      case 2:
-        System.out.println("Entrei no case 2");
-        do {
-          indiceUm = random.nextInt(tabuleiro.tabuleiroJogador.length - 1);
-          indiceDois = random.nextInt(tabuleiro.tabuleiroJogador.length - 1);
+  public void jogadaMaquina() {
+    indiceUm = random.nextInt(tabuleiro.tabuleiroJogador.length);
+    indiceDois = random.nextInt(tabuleiro.tabuleiroJogador.length);
 
-          if (tabuleiro.tabuleiroJogador[indiceUm][indiceDois] == 'O') {
-            tabuleiro.tabuleiroJogador[indiceUm][indiceDois] = 'X';
-            jogadorAtual = 1;
-            break;
-          } else if (tabuleiro.tabuleiroJogador[indiceUm][indiceDois] == 'N') {
-            tabuleiro.tabuleiroJogador[indiceUm][indiceDois] = '*';
-            acertosMaquina += 1;
-            jogadorAtual = 1;
-            break;
-          }
-        } while (jogadorAtual != 2);
-
+    if (tabuleiro.tabuleiroJogador[indiceUm][indiceDois] == 'O') {
+      tabuleiro.tabuleiroJogador[indiceUm][indiceDois] = 'X';
+    } else if (tabuleiro.tabuleiroJogador[indiceUm][indiceDois] == 'N') {
+      tabuleiro.tabuleiroJogador[indiceUm][indiceDois] = '*';
+      acertosMaquina += 1;
+    } else {
+      jogadaMaquina();
     }
 
   }
@@ -92,12 +86,10 @@ public class Jogo {
   public void verificaFimDeJogo() {
     if (acertosJogador == tabuleiro.posicaoNaviosJogador.length) {
       System.out.println("O jogo terminou, o jogador venceu!");
-      tabuleiro.printaTabuleiros();
       fimDeJogo = true;
     }
     if (acertosMaquina == tabuleiro.posicaoNaviosMaquina.length) {
       System.out.println("O jogo terminou, a máquina venceu!");
-      tabuleiro.printaTabuleiros();
       fimDeJogo = true;
     }
   }
