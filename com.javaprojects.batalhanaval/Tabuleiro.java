@@ -3,11 +3,11 @@ import java.util.Random;
 public class Tabuleiro {
 
   Random random = new Random();
-  char[][] tabuleiroJogador = new char[5][5];
-  char[][] tabuleiroMaquina = new char[5][5];
-  int[][] posicaoNaviosJogador = new int[5][2];
-  int[][] posicaoNaviosMaquina = new int[5][2];
-  int quantidadeNavios = 5;
+  char[][] tabuleiroJogador = new char[3][3];
+  char[][] tabuleiroMaquina = new char[3][3];
+  int[][] posicaoNaviosJogador = new int[3][2];
+  int[][] posicaoNaviosMaquina = new int[3][2];
+  int quantidadeNavios = 3;
   int indiceUm;
   int indiceDois;
   int linhaJogo;

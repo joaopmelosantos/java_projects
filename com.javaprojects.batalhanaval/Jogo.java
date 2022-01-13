@@ -31,6 +31,7 @@ public class Jogo {
     tabuleiro.printaTabuleiros();
 
     do {
+      verificaFimDeJogo();
       jogadaJogador();
       jogadaMaquina();
       verificaFimDeJogo();
@@ -40,13 +41,14 @@ public class Jogo {
 
   public void jogadaJogador() {
     do {
-      System.out.printf("\nDigite a linha da jogada (0-%d): \n", tabuleiro.tabuleiroJogador.length - 1);
+      System.out.printf("\nDigite a linha da jogada (0-%d): ", tabuleiro.tabuleiroJogador.length - 1);
       linhaJogo = scan.nextInt();
     } while (linhaJogo < 0 || linhaJogo > tabuleiro.tabuleiroJogador.length - 1);
 
     do {
-      System.out.printf("\nDigite a coluna da jogada (0-%d): \n", tabuleiro.tabuleiroJogador.length - 1);
+      System.out.printf("Digite a coluna da jogada (0-%d): ", tabuleiro.tabuleiroJogador.length - 1);
       colunaJogo = scan.nextInt();
+      System.out.println();
     } while (colunaJogo < 0 || colunaJogo > tabuleiro.tabuleiroJogador.length - 1);
 
     if (tabuleiro.tabuleiroMaquina[linhaJogo][colunaJogo] == '*'
@@ -84,12 +86,16 @@ public class Jogo {
   }
 
   public void verificaFimDeJogo() {
-    if (acertosJogador == tabuleiro.posicaoNaviosJogador.length) {
-      System.out.println("O jogo terminou, o jogador venceu!");
+    if (acertosJogador == tabuleiro.quantidadeNavios) {
+      System.out.println("######################################");
+      System.out.println("O jogo terminou, você venceu!");
+      System.out.println("######################################\n");
       fimDeJogo = true;
     }
-    if (acertosMaquina == tabuleiro.posicaoNaviosMaquina.length) {
+    if (acertosMaquina == tabuleiro.quantidadeNavios) {
+      System.out.println("######################################");
       System.out.println("O jogo terminou, a máquina venceu!");
+      System.out.println("######################################\n");
       fimDeJogo = true;
     }
   }
